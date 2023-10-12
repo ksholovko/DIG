@@ -91,9 +91,7 @@
     .animeOpenClose .line-3 {
       transform: rotate(45deg) translate(-4px, -4px);
     }
-    /* .btn-hamburger{
-        display: none;
-    } */
+  
 /* ------------------theme switcher------------------------ */
 .toggle-switch {
     display: flex;
