@@ -31,11 +31,6 @@
 }
 
 
-.container {
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
 @media screen and (min-width: 375px) {
   .container {
     width: 375px;
@@ -52,8 +47,10 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .container {
-    width: 1440px;
+    width: 1280px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
