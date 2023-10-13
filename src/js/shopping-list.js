@@ -1,7 +1,9 @@
 
 
+// Ця змінна для симуляції даних в localStorage
+// Видалити після написання фунції додавання в localStorage
 
-let books = [
+const books = [
   {
     _id: '642fd89ac8cf5ee957f12361',
     list_name: 'Middle Grade Paperback Monthly',
@@ -231,7 +233,7 @@ let books = [
 ];
 const savedBooks  = localStorage.setItem('savedBooks', JSON.stringify(books));
 
-
+// -- Все що вище видалити після написання фунції додавання в localStorage --//
 
 
 
@@ -242,15 +244,15 @@ const applebooks = '../images/applebooks.png';
 const trash = '../images/icons.svg'
 
 const bookList = document.querySelector('.list-books');
-
-
-
-
-
-
 const storedBooks = JSON.parse(localStorage.getItem('savedBooks')) || [];
 
-console.log(storedBooks)
+bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
+
+
+
+
+// -- Функція верстки картки книги по даним з localStorage --//
+
 function marcupListBooks(storedBooks) {
   return storedBooks
     .map(
@@ -266,11 +268,6 @@ function marcupListBooks(storedBooks) {
         if (!description) {
           description =
             'Sorry, but this book does not have an accessible description. Try reading it on the website of one of the shops';
-        }
-        if (window.innerWidth < 768) {
-          if (description.length >= 25) {
-            description = description.slice(0, 50) + `<span> ...</span>`;
-          }
         }
         return `<li class="shopping-list-card">
         <img class="shopping-list-img" src="${book_image}" alt="${title}" />
@@ -313,26 +310,27 @@ function marcupListBooks(storedBooks) {
     .join('');
 }
 
-bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
 
 
 
 
 
 
+// -- Функція видалення картки книги зі сторінки та з localStorage --//
+// -- Перевірити коли буде написана фунції додавання в localStorage --//
 
 function deleteBook(bookId) {
+  // Знайти індекс книги в масиві storedBooks за її _id
   const bookIndex = storedBooks.findIndex(book => book._id === bookId);
 
+  // Перевірити, чи була знайдена книга
   if (bookIndex !== -1) {
+    // Видалити книгу з масиву
     storedBooks.splice(bookIndex, 1);
+
+    // Оновити дані в local storage
     localStorage.setItem('savedBooks', JSON.stringify(storedBooks));
-    
-    if (storedBooks.length === 0) {
-      // Якщо на сторінці більше немає книг, покажіть повідомлення
-      document.getElementById('empty-page-message').style.display = 'block';
-    }
-    
+
     // Оновити відображення списку книг на сторінці
     bookList.innerHTML = '';
     bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
@@ -351,6 +349,7 @@ deleteButtons.forEach(button => {
 });
 
 
+// -- Функція повідомлення коли на сторінці немає карток --//
 const emptyPageMessage = document.querySelector('.empty-page-message');
 
 function displayEmptyPageMessage() {
@@ -360,7 +359,7 @@ function displayEmptyPageMessage() {
     emptyPageMessage.style.display = 'block';
   } else {
     // Показати список книг, якщо масив не порожній
-    bookList.style.display = 'block';
+    // bookList.style.display = 'block';
     emptyPageMessage.style.display = 'none';
   }
 }
