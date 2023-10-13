@@ -1,7 +1,11 @@
-.header-container {
-  background-color: #ffffff;
+.header {
   border: 1.5px solid #111111;
   border-radius: 0px 0px 8px 8px;
+}
+
+.header-container {
+  background-color: #ffffff;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +24,6 @@
 }
 
 .header-logo {
-  /* fill: #111111; */
   width: 24px;
   height: 24px;
   margin-right: 8px;
@@ -205,8 +208,8 @@ input[type='checkbox']:checked~.check::after {
 
 .mobile-menu__header {
   background-color: #ffffff;
-  border: 1.5px solid #111111;
-  border-radius: 0px 0px 8px 8px;
+  /* border: 1.5px solid #111111;
+  border-radius: 0px 0px 8px 8px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
