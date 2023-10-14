@@ -1,0 +1,132 @@
+.container-support {
+    padding-left: 40px;
+
+    width: 335px;
+    height: 460px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+    background: radial-gradient(189.32% 190.93% at 59.76% -23.42%,
+            #4f2ee8 18.03%,
+            #fff 100%);
+
+    box-shadow: 0px 10px 10px 0px rgba(245, 245, 247, 0.1);
+}
+
+.container-ul-supp {
+    height: 292px;
+    width: 159px;
+    margin-top: 44px;
+
+    margin-bottom: 72px;
+}
+
+.container-ul-supp .support-list li {
+    counter-increment: list-item;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.container-ul-supp .support-list li:before {
+    content: counter(list-item, decimal-leading-zero);
+    margin-right: 5px;
+}
+
+.support-img {
+    filter: grayscale(100%);
+    filter: brightness(0) invert(1);
+}
+
+.container-support {}
+
+.title-sup {
+    display: flex;
+    flex-direction: row;
+    padding-top: 24px;
+
+    align-items: center;
+}
+
+.support-title {
+    display: flex;
+    margin-right: 12px;
+}
+
+.svg-supp {
+    display: flex;
+}
+
+.support-svg {
+    fill: #fff;
+}
+
+.container-ul-supp {}
+
+.support-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: start;
+    align-items: start;
+}
+
+.support-img {}
+
+.title-Ukr {
+    font-size: 22px;
+    color: #fff;
+
+    font-weight: 700;
+    line-height: 1.09;
+    letter-spacing: -0.88px;
+}
+
+.supp-scroll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: auto;
+}
+
+.supp-btn {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supp-arrow {
+    transform: rotate(90deg);
+    stroke: #4f2ee8;
+}
+
+
+.btn {
+    justify-content: center;
+    cursor: pointer;
+    right: 10px;
+    bottom: 200px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--violet-color);
+    bottom: 10px;
+    margin-top: 20px;
+    margin-left: 112px;
+    margin-bottom: 20px;
+}
+
+.svg {
+    fill: var(--title-color-dark-mode);
+    transform: translate(30%, 30%) rotate(360deg);
+}
