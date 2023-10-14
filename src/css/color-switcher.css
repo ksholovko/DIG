@@ -1,0 +1,53 @@
+.switch {
+    width: 40px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    flex: none;
+    flex-grow: 0;
+}
+
+.switch-input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.slider-round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #4f2ee8 0%, #dcdcdc 100%);
+    box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.slider-round::before {
+    content: '';
+    position: absolute;
+    cursor: pointer;
+    top: 1px;
+    bottom: 0;
+    left: 1px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.1), 0px 2px 2px rgba(0, 0, 0, 0.1), 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.switch-input:checked+.slider-round {
+    background: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
+    box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.switch-input:checked+.slider-round::before {
+    background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+    transform: translateX(20px);
+}
