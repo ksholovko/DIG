@@ -1,6 +1,4 @@
-// import './js/API';
 import './js/header';
+import './js/selectedCategories';
 // import './js/';
 // import './js/';
-// import './js/';
-import './js/shopping-list';
