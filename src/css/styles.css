@@ -12,6 +12,7 @@
 @import url('./support-Ukraine.css');
 @import url('./categories.css');
 @import url('./top-books.css');
+@import url('./adaptive.css');
 
 :root {
   font-family: 'DM Sans', sans-serif;
