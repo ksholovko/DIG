@@ -1,3 +1,20 @@
+.shopping-list__wrapper {
+  display: flex;
+  column-gap: 40px;
+}
+
+
+@media (max-width:1279px) {
+  .shopping-list__wrapper {
+  display: block;
+  }
+  .container-support{
+  display: none;
+}
+}
+
+
+
 .section-shopping {
     padding-bottom: 40px;
     box-sizing: border-box;
@@ -87,8 +104,8 @@
   .trash {
     width: 16px;
     height: 16px;
-    fill: var(--white-color);
-    stroke: var(--brand-color);
+    fill: #fff;
+    stroke: #4f2ee8;
   }
   
   .empty-page-message {
@@ -107,4 +124,10 @@
   .text-empty {
     text-align: center;
     width: 244px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .text-empty {
+      width: 350px;
+    }
   }
