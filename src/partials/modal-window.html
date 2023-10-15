@@ -1,21 +1,20 @@
-<div class="backdrop is-hidden" id="book-modal">
-  <div class="modal">
-    <div class="modal__content"></div>
-    <button class="modal__close-btn">
-      <svg class="modal__close-img">
-        <use href="../images/icons.svg#icon-close"></use>
+<div class="backdrop-pop-up is-hidden" data-pop-up>
+  <div class="modal-pop-up">
+    <button
+      type="button"
+      class="close-button"
+      data-pop-up-close
+      aria-label="Close"
+    >
+      <svg class="close-button__icon" width="18" height="18">
+        <use href="./images/symbol-defs.svg#icon-x-close"></use>
       </svg>
     </button>
-    <button class="add-bookBtn">
-      <span class="addNotification">Add to shopping list</span>
-      <span class="removeNotification hidden"
-        >remove from the shopping list</span
-      >
+
+    <div class="modal-pop-up-content"></div>
+
+    <button type="button" class="modal-pop-up-btn button">
+      Add to shopping list
     </button>
-    <p class="notification hidden">
-      Сongratulations! You have added the book to the shopping list. To delete,
-      press the button “Remove from the shopping list”.
-    </p>
   </div>
 </div>
-

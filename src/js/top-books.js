@@ -1,15 +1,21 @@
 import { getTopBooks } from './API';
-const ulElement = document.querySelector('.list-js');
 const sectionBooks = document.querySelector('.books');
+const allCategory = document.querySelector('.all-category');
 
-try {
-  const responseData = await getTopBooks();
-  console.log(responseData);
-  createCard(responseData);
-} catch (error) {
-  console.log('Error with your API');
+async function fetchDataAndCreateCard() {
+  try {
+    const responseData = await getTopBooks();
+    createCard(responseData);
+  } catch (error) {
+    console.log('Error with your API');
+  }
 }
 
+fetchDataAndCreateCard();
+
+allCategory.addEventListener('click', function () {
+  fetchDataAndCreateCard();
+});
 
 function createCard(data) {
   const murkup = data
