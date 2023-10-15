@@ -1,41 +1,84 @@
- const modalEl = document.querySelector('.backdrop');
- const openModalEl = document.querySelector('.open-modal');
- const formWrapperEl = document.querySelector('.form-wrapper');
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../auth/auth-listeners/auth-config-firebase";
 
- const signInEl = document.querySelector('.sign-in');
- const signUpEl = document.querySelector('.sign-up');
+import { getBookId } from '../utils/get-books-id';
+import { createMarkup } from './create-modal';
 
- openModalEl.addEventListener('click', openModal);
- signUpEl.addEventListener('click', openModal);
- signInEl.addEventListener('click', signInForm);
+const book = document.querySelector('.js-home-category-books-list');
+const basketArr = JSON.parse(localStorage.getItem('books')) ?? [];
 
- function signInForm() {
-   const markup = `<form class="login-form">
-     <input type="text" name="password" placeholder="password" />
-     <button type="submit">login</button>
-   </form>`;
-   formWrapperEl.innerHTML = markup;
+book.addEventListener('click', onClick);
 
-   const formEll = document.querySelector('.login-form');
- }
+function onClick(evt) {
+  //   console.log(evt.target);
+  const bookCard = evt.target.parentNode;
+  const bookCardId = bookCard.dataset.id;
 
- function openModal() {
-   const markup = `<form class="auth-form">
-    <input type="text" name="name" placeholder="name" />
-     <input type="text" name="email" placeholder="email" />
-    <input type="text" name="password" placeholder="password" />
-     <button type="submit">push</button>
-   </form>`;
-   formWrapperEl.innerHTML = markup;
-  const formEl = document.querySelector('.auth-form');
+  getBookId(bookCardId)
+    .then(obj => {
+      if (bookCard.classList.contains('js-home-books-item')) {
+        createMarkup(obj);
+      }
 
-  modalEl.classList.remove('is-hidden');
-  console.log('openModal');
- }
- openModal();
+      const addBook = document.querySelector('#js-book-modal-btn');
 
-    <form class="login-form">
-        <input type="text" name="email" placeholder="email" />
-        <input type="text" name="password" placeholder="password" />
-        <button type="submit">login</button>
-      </form> 
+      const user = auth.currentUser;
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          // const uid = user.uid;
+          document.querySelector('.book-modal-buy').style.display = 'none';
+          addBook.style.display = 'none';
+          
+        } 
+      }
+      );
+      
+      const inStorage = basketArr.some(({ _id }) => _id === obj._id);
+      document.querySelector('.book-modal-buy').style.display = 'none';
+
+        if (inStorage) {
+          addBook.addEventListener('click', addToCart);
+  
+          addBook.classList.remove('js-add');
+          addBook.classList.add('js-remove');
+          document.querySelector('.book-modal-buy').style.display = 'block';
+        } else {
+          addBook.addEventListener('click', addToCart);
+  
+          addBook.classList.add('js-add');
+          addBook.classList.remove('js-remove');
+          document.querySelector('.book-modal-buy').style.display = 'none';
+        }
+      
+      function addToCart(evt) {
+        const btnAdd = evt.target.classList.contains('js-add');
+        const inStorage = basketArr.some(({ _id }) => _id === obj._id);
+        
+        if (btnAdd) {
+          evt.target.classList.remove('js-add');
+          evt.target.classList.add('js-remove');
+          document.querySelector('.book-modal-buy').style.display = 'block';
+
+          if (inStorage) {
+            return;
+          }
+          basketArr.push(obj);
+          localStorage.setItem('books', JSON.stringify(basketArr));
+        } else {
+          evt.target.classList.remove('js-remove');
+          evt.target.classList.add('js-add');
+
+          document.querySelector('.book-modal-buy').style.display = 'none';
+
+          basketArr.map(localBook => {
+            if (localBook._id === obj._id) {
+              basketArr.splice(basketArr.indexOf(localBook), 1);
+              localStorage.setItem('books', JSON.stringify(basketArr));
+            }
+          });
+        }
+      }
+    })
+    .catch(err => console.log(err));
+}
+// localStorage.clear();
