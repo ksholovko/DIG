@@ -1,16 +1,14 @@
 import { getBooksByCategory } from './API';
 
-const bookCategory = document.querySelector('.category-tittle');
-const booksList = document.querySelector('.book-list');
-const listItem = document.querySelector('.categories-item');
+const listItem = document.querySelector('.categories-list');
+const books = document.querySelector('.books');
 
 listItem.addEventListener('click', pushBooksOnPage);
 
 async function pushBooksOnPage(event) {
   event.preventDefault();
-  booksList.innerHTML = '';
+  books.innerHTML = '';
   const category = event.target.name;
-  //   let category = 'Hardcover Fiction';
   const data = await getBooksByCategory(category);
   renderBooksMarkup(data, category);
 }
@@ -21,8 +19,8 @@ function renderBooksMarkup(choosenCategory, category) {
     words[words.length - 1]
   }</span>`;
   category = words.join(' ');
-  bookCategory.innerHTML = `<h2 class="category-tittle">${category}</h2>`;
-  const murkup = choosenCategory
+  const headTitle = `<h2 class="category-tittle">${category}</h2>`;
+  const murkup = `<ul class="book-list">${choosenCategory
     .map(
       ({ book_image, title, author }) => `
       <li class="book-list-item">
@@ -36,6 +34,6 @@ function renderBooksMarkup(choosenCategory, category) {
       </li>
     `
     )
-    .join('');
-  booksList.innerHTML = murkup;
+    .join('')}</ul>`;
+  books.insertAdjacentHTML('beforeend', headTitle + murkup);
 }

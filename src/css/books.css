@@ -21,8 +21,8 @@
 }
 .book-item-img {
   display: block;
-  max-width: 335px;
-  max-height: 485px;
+  width: 335px;
+  height: 485px;
   border-radius: 8px;
   margin-bottom: 14px;
 }
@@ -72,7 +72,7 @@
     column-gap: 25px;
   }
   .book-list-item {
-    width: calc(100% - 50px) / 3;
+    width: calc((100% - 50px) / 3);
     margin-bottom: 0;
   }
   .book-item-img {
@@ -87,9 +87,9 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .container {
-    max-width: 1280px;
+    max-width: 1440px;
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -97,7 +97,7 @@
     column-gap: 24px;
   }
   .book-list-item {
-    min-width: calc(100% - 96px) / 5;
+    min-width: calc((100% - 96px) / 5);
     overflow: hidden;
   }
   .book-item-img {
