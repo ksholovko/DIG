@@ -9,7 +9,6 @@
 @import url('./books.css');
 @import url('./header.css');
 @import url('./modal-window.css');
-@import url('./shopping-list.css');
 @import url('./support-Ukraine.css');
 @import url('./categories.css');
 @import url('./top-books.css');
@@ -50,7 +49,7 @@
 
 @media screen and (min-width: 1440px) {
   .container {
-    width: 1280px;
+    width: 1440px;
     padding-left: 24px;
     padding-right: 24px;
   }

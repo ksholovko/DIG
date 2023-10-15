@@ -6,7 +6,7 @@
 .header-container {
   background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   height: 64px;
 }
@@ -30,7 +30,8 @@
 
 .site-nav {
   display: flex;
-  gap: 24px;
+  gap: 16px;
+  margin-left: 40px;
 }
 
 .site-nav_item {
@@ -147,7 +148,6 @@ input[type='checkbox']:checked~.check::after {
   background-color: transparent;
   stroke: currentColor;
   margin-left: 14px;
-  margin-right: 14px;
   border: none;
 
 }
@@ -313,7 +313,7 @@ input[type='checkbox']:checked~.check::after {
   }
 
   .toggle-theme {
-    margin-left: 0;
+    margin-left: 200px;
   }
 
   .sign-up-button {

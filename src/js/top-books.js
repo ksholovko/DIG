@@ -1,6 +1,7 @@
 import { getTopBooks } from './API';
 const ulElement = document.querySelector('.list-js');
 const sectionBooks = document.querySelector('.books');
+
 try {
   const responseData = await getTopBooks();
   console.log(responseData);
@@ -8,6 +9,8 @@ try {
 } catch (error) {
   console.log('Error with your API');
 }
+
+
 function createCard(data) {
   const murkup = data
     .map(data => {
