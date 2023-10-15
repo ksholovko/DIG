@@ -44,3 +44,31 @@
         padding-right: 24px;
     }
 }
+
+
+.main-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    line-height: 1.19;
+    letter-spacing: -1.92px;
+    margin-top: 40px;  
+    margin-bottom: 40px;
+  }
+  @media screen and (min-width: 768px) {
+    .main-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 48px;
+      line-height: 1.08;
+      letter-spacing: -1.92px;
+    }
+  }
+
+.brendcolor {
+    font-family: 'DM Sans', sans-serif;
+    font-size: inherit;
+    color: #4f2ee8;
+  }
+
+  .container-support {
+    width: 356px;
+  }
