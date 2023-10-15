@@ -43,5 +43,6 @@ function createMarkUp(result) {
 
   categoriesBtns.forEach(categoriesButton => { 
     categoriesButton.addEventListener('click', toggleClass); 
+
   }); 
 })();

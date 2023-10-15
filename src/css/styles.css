@@ -11,7 +11,8 @@
 @import url('./modal-window.css');
 @import url('./shopping-list.css');
 @import url('./support-Ukraine.css');
-
+@import url('./categories.css');
+@import url('./top-books.css');
 
 :root {
   font-family: 'DM Sans', sans-serif;
@@ -27,17 +28,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
 }
-
-.container {
-  margin-left: auto;
-  margin-left: auto;
-}
-
 
 @media screen and (min-width: 375px) {
   .container {
+    margin-left: auto;
+    margin-right: auto;
     width: 375px;
     padding-left: 20px;
     padding-right: 20px;
