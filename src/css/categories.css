@@ -16,7 +16,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .categories {
     width: 356px;
     margin-left: 24px;
@@ -44,7 +44,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .categories-element {
     width: 328px;
   }
@@ -75,7 +75,8 @@
 
 .categories::-webkit-scrollbar-thumb {
   background-color: #e0e0e0;
-  border-radius: 12px; /* округлось бегунка */
+  border-radius: 12px;
+  /* округлось бегунка */
 }
 
 .active-btn {

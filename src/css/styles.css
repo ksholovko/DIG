@@ -11,6 +11,7 @@
 @import url('./modal-window.css');
 @import url('./shopping-list.css');
 @import url('./support-Ukraine.css');
+@import url('./categories.css');
 
 
 :root {
@@ -28,11 +29,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-}
-
-.container {
-  margin-left: auto;
-  margin-left: auto;
 }
 
 
@@ -59,6 +55,8 @@
     padding-right: 24px;
   }
 }
+
+
 
 .main-title {
   font-size: 32px;
