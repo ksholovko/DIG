@@ -1,12 +1,21 @@
-@media screen and (min-width: 375px) {
-    /* .adaptive-flex {
+@media screen and (min-width: 375px) and (max-width:767px) {
+    .adaptive-flex {
         display: flex;
         flex-direction: column;
         row-gap: 40px;
-    } */
+
+    }
+
+    .adaptive-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+        align-items: center
+    }
+
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width:1339px) {
     .adaptive-flex {
         display: flex;
         flex-wrap: wrap;
@@ -22,9 +31,13 @@
 }
 
 @media screen and (min-width: 1440px) {
-    /* .adaptive-container {
+    .adaptive-flex {
+        gap: 40px;
+    }
+
+    .adaptive-container {
         display: flex;
         flex-direction: column;
         gap: 86px;
-    } */
+    }
 }
