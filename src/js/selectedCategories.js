@@ -13,8 +13,13 @@ const booksList = document.querySelector('.book-list');
 let category = 'Hardcover Fiction';
 bookCategory.textContent = category;
 
+fetchBooksByCategoty(category);
+
+async function fetchBooksByCategoty() {
 const data = await getBooksByCategory(category);
 renderBooksMarkup(data);
+}
+
 
 function renderBooksMarkup(choosenCategory) {
   const murkup = choosenCategory
