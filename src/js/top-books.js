@@ -1,6 +1,6 @@
 import { getTopBooks } from './API';
-const ulElement = document.querySelector('.list-js');
 const sectionBooks = document.querySelector('.books');
+const allCategory = document.querySelector('.all-category');
 
 async function fetchDataAndCreateCard() {
   try {
@@ -12,6 +12,10 @@ async function fetchDataAndCreateCard() {
 }
 
 fetchDataAndCreateCard();
+
+allCategory.addEventListener('click', function () {
+  fetchDataAndCreateCard();
+});
 
 function createCard(data) {
   const murkup = data

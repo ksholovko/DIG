@@ -1,48 +1,47 @@
-import { getCategoriesList } from './API'; 
+import { getCategoriesList } from './API';
 
-const categoryContainer = document.querySelector('.categories-list'); 
+const categoryContainer = document.querySelector('.categories-list');
 
-async function categoriesData() { 
-  try { 
-    const result = await getCategoriesList(); 
-    const categoriesList = createMarkUp(result); 
-    categoryContainer.insertAdjacentHTML('beforeend', categoriesList); 
-  } catch (error) { 
-    console.error(error); 
-  } 
-} 
+async function categoriesData() {
+  try {
+    const result = await getCategoriesList();
+    const categoriesList = createMarkUp(result);
+    categoryContainer.insertAdjacentHTML('beforeend', categoriesList);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-function createMarkUp(result) { 
-  return result 
-    .map( 
-      ({ list_name }) => 
+function createMarkUp(result) {
+  return result
+    .map(
+      ({ list_name }) =>
         `<li class="categories-element"> 
         <button class="categories-item" name="${list_name}" type="submit"> 
     ${list_name}</button> 
-    </li>` 
-    ) 
-    .join(''); 
-} 
+    </li>`
+    )
+    .join('');
+}
 
 (async () => {
   await categoriesData();
-  const categoriesBtns = categoryContainer.querySelectorAll('.categories-item'); 
+  const categoriesBtns = categoryContainer.querySelectorAll('.categories-item');
 
-  function toggleClass(event) { 
-    const categoriesButton = event.target; 
-    console.log(categoriesButton); 
+  function toggleClass(event) {
+    const categoriesButton = event.target;
+    console.log(categoriesButton);
 
-    categoriesButton.classList.add('active-btn'); 
+    categoriesButton.classList.add('active-btn');
 
-    categoriesBtns.forEach(otherButton => { 
-      if (otherButton !== categoriesButton) { 
-        otherButton.classList.remove('active-btn'); 
-      } 
-    }); 
-  } 
+    categoriesBtns.forEach(otherButton => {
+      if (otherButton !== categoriesButton) {
+        otherButton.classList.remove('active-btn');
+      }
+    });
+  }
 
-  categoriesBtns.forEach(categoriesButton => { 
-    categoriesButton.addEventListener('click', toggleClass); 
-
-  }); 
+  categoriesBtns.forEach(categoriesButton => {
+    categoriesButton.addEventListener('click', toggleClass);
+  });
 })();
