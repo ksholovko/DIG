@@ -24,7 +24,7 @@ function createMarkUp(result) {
     .join(''); 
 } 
  
-await categoriesData(); 
+categoriesData(); 
  
 const categoriesBtns = categoryContainer.querySelectorAll('.categories-item'); 
  
