@@ -1,7 +1,7 @@
 import { getCategoriesList } from './API'; 
- 
+
 const categoryContainer = document.querySelector('.categories-list'); 
- 
+
 async function categoriesData() { 
   try { 
     const result = await getCategoriesList(); 
@@ -11,7 +11,7 @@ async function categoriesData() {
     console.error(error); 
   } 
 } 
- 
+
 function createMarkUp(result) { 
   return result 
     .map( 
@@ -23,24 +23,25 @@ function createMarkUp(result) {
     ) 
     .join(''); 
 } 
- 
-await categoriesData(); 
- 
-const categoriesBtns = categoryContainer.querySelectorAll('.categories-item'); 
- 
-function toggleClass(event) { 
-  const categoriesButton = event.target; 
-  console.log(categoriesButton); 
- 
-  categoriesButton.classList.add('active-btn'); 
- 
-  categoriesBtns.forEach(otherButton => { 
-    if (otherButton !== categoriesButton) { 
-      otherButton.classList.remove('active-btn'); 
-    } 
+
+(async () => {
+  await categoriesData(); // Викликаємо асинхронну функцію
+  const categoriesBtns = categoryContainer.querySelectorAll('.categories-item'); 
+
+  function toggleClass(event) { 
+    const categoriesButton = event.target; 
+    console.log(categoriesButton); 
+
+    categoriesButton.classList.add('active-btn'); 
+
+    categoriesBtns.forEach(otherButton => { 
+      if (otherButton !== categoriesButton) { 
+        otherButton.classList.remove('active-btn'); 
+      } 
+    }); 
+  } 
+
+  categoriesBtns.forEach(categoriesButton => { 
+    categoriesButton.addEventListener('click', toggleClass); 
   }); 
-} 
- 
-categoriesBtns.forEach(categoriesButton => { 
-  categoriesButton.addEventListener('click', toggleClass); 
-});
+})();
