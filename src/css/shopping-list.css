@@ -4,7 +4,7 @@
 }
 
 
-@media (max-width:1279px) {
+@media (max-width:1439px) {
   .shopping-list__wrapper {
   display: block;
   }
@@ -13,6 +13,11 @@
 }
 }
 
+@media screen and (min-width: 1440px) {
+.wrapper__content {
+  width: 996px;
+}
+}
 
 
 .section-shopping {
@@ -65,6 +70,23 @@
   }
   .shopping-title-book {
     width: calc(100% - 36px);
+    margin-bottom: 4px;
+    color: #111111;
+    font-size: 16px;
+  }
+  .shopping-list__subtitle {
+    color: #B4AFAF;
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .author {
+    color: #B4AFAF;
+    font-size: 12px;
+  }
+  .description{
+    color: #111111;
+    font-size: 14px;
   }
   
   .shopping-list-thumb {
@@ -124,6 +146,7 @@
   .text-empty {
     text-align: center;
     width: 244px;
+    
   }
 
   @media screen and (min-width: 768px) {
