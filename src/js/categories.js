@@ -17,7 +17,7 @@ function createMarkUp(result) {
     .map( 
       ({ list_name }) => 
         `<li class="categories-element"> 
-        <button class="categories-item" type="submit"> 
+        <button class="categories-item" name="${list_name}" type="submit"> 
     ${list_name}</button> 
     </li>` 
     ) 
@@ -25,7 +25,7 @@ function createMarkUp(result) {
 } 
 
 (async () => {
-  await categoriesData(); // Викликаємо асинхронну функцію
+  await categoriesData();
   const categoriesBtns = categoryContainer.querySelectorAll('.categories-item'); 
 
   function toggleClass(event) { 
