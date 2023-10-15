@@ -13,7 +13,6 @@
 @import url('./support-Ukraine.css');
 @import url('./categories.css');
 
-
 :root {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
@@ -28,9 +27,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
 }
-
 
 @media screen and (min-width: 375px) {
   .container {
@@ -57,8 +54,6 @@
     padding-right: 24px;
   }
 }
-
-
 
 .main-title {
   font-size: 32px;
