@@ -1,27 +1,27 @@
-import { getCategoriesList, getBooksByCategory } from './API';
+import { getBooksByCategory } from './API';
 
 const bookCategory = document.querySelector('.category-tittle');
 const booksList = document.querySelector('.book-list');
-// const list-item = document.querySelector('.categories-item');
+const listItem = document.querySelector('.categories-item');
 
-// list-item.addEventListener('click', renderBooksMarkup);
+listItem.addEventListener('click', pushBooksOnPage);
 
-// function renderBooksMarkup(event) {
-//   event.preventDefault();
-// }
-
-let category = 'Hardcover Fiction';
-bookCategory.textContent = category;
-
-fetchBooksByCategoty(category);
-
-async function fetchBooksByCategoty() {
-const data = await getBooksByCategory(category);
-renderBooksMarkup(data);
+async function pushBooksOnPage(event) {
+  event.preventDefault();
+  booksList.innerHTML = '';
+  const category = event.target.name;
+  //   let category = 'Hardcover Fiction';
+  const data = await getBooksByCategory(category);
+  renderBooksMarkup(data, category);
 }
 
-
-function renderBooksMarkup(choosenCategory) {
+function renderBooksMarkup(choosenCategory, category) {
+  let words = category.split(' ');
+  words[words.length - 1] = `<span class="speccolor">${
+    words[words.length - 1]
+  }</span>`;
+  category = words.join(' ');
+  bookCategory.innerHTML = `<h2 class="category-tittle">${category}</h2>`;
   const murkup = choosenCategory
     .map(
       ({ book_image, title, author }) => `
