@@ -27,7 +27,7 @@ function createCard(data) {
       if (screenWidth < 768) {
         limitedData = arr.slice(0, 1); // Для мобільних пристроїв 1 книжка вряду
         console.log(limitedData);
-      } else if (screenWidth < 1280) {
+      } else if (screenWidth < 1440) {
         limitedData = arr.slice(0, 3); // Для планшетів 2 книжки в ряду
         console.log(limitedData);
       } else {
