@@ -29,7 +29,7 @@
 }
 
 .categories-element {
-  width: 307px;
+  width: 3277px;
   margin-bottom: 24px;
 }
 
@@ -39,7 +39,7 @@
 
 @media screen and (min-width: 768px) {
   .categories-element {
-    width: 309px;
+    width: 329px;
     margin-bottom: 32px;
   }
 }
@@ -79,6 +79,7 @@
 }
 
 .active-btn {
+  text-align: left;
   color: #4f2ee8;
   text-transform: uppercase;
   font-weight: 700;
