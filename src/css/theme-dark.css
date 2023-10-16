@@ -11,7 +11,7 @@
 }
 
 .dark .header,
-.dark .header-container{
+.dark .header-container {
     color: #FFF;
     background: #111;
 }
@@ -23,13 +23,11 @@
 .dark .site-nav_link,
 .dark .header-logo-link,
 .dark .site-nav_link,
-.dark .site-nav_logo_active
-.dark .site-nav-logo,
+.dark .site-nav_logo_active .dark .site-nav-logo,
 .dark .burger-menu__icon,
 .dark .mobile-menu__header,
 .dark .mobile-menu__icon,
-.dark .close-button__icon
-.dark .img-light {
+.dark .close-button__icon .dark .img-light {
     color: #FFF;
     fill: #FFF;
     stroke: #FFF;
