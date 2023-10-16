@@ -47,8 +47,9 @@
     color: #FFF;
 }
 
-.dark .book-item-tittle
-.dark .shopping-title-book {
+.dark .book-item-tittle,
+.dark .shopping-title-book,
+.dark .description {
     color: #FFF;
 }
 
