@@ -29,7 +29,7 @@
 }
 
 .categories-element {
-  width: 327px;
+  width: 307px;
   margin-bottom: 24px;
 }
 
@@ -39,7 +39,7 @@
 
 @media screen and (min-width: 768px) {
   .categories-element {
-    width: 329px;
+    width: 309px;
     margin-bottom: 32px;
   }
 }
