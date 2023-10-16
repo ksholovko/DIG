@@ -1,6 +1,6 @@
 import { getTopBooks } from './API';
 
-// import { pushBooksOnPage } from './selectedCategories';
+import { renderBooksMarkup } from './selectedCategories';
 
 const sectionBooks = document.querySelector('.books');
 const allCategory = document.querySelector('.all-category');
@@ -18,9 +18,21 @@ async function fetchDataAndCreateCard() {
 fetchDataAndCreateCard();
 
 allCategory.addEventListener('click', function () {
+  // sectionBooks.innerHTML = '';
   fetchDataAndCreateCard();
 });
-// seeMoreBtn.addEventListener('click', pushBooksOnPage);
+
+seeMoreBtn.addEventListener('click', function () {
+  pushMoreBooks();
+});
+
+async function pushMoreBooks(event) {
+  event.preventDefault();
+  books.innerHTML = '';
+  const category = event.target.name;
+  const data = await getBooksByCategory(category);
+  renderBooksMarkup(data, category);
+}
 
 function createCard(data) {
   const murkup = data
@@ -59,7 +71,7 @@ function createCard(data) {
   `;
     })
     .join('')}
-  <button class="see-more-btn">see more</button>
+  <button class="see-more-btn" name="${list}">see more</button>
 </ul>
 `;
     })
