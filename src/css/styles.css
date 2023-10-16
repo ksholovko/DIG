@@ -13,7 +13,7 @@
 @import url('./categories.css');
 @import url('./top-books.css');
 @import url('./adaptive.css');
-@import url('./dark-theme.css');
+@import url('./theme-dark.css');
 
 :root {
   font-family: 'DM Sans', sans-serif;

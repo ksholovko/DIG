@@ -2,73 +2,75 @@
 @import url('./header.css');
 @import url('./support-Ukraine-shopping-list.css');
 @import url('./shopping-list.css');
+@import url('./theme-dark.css');
 
 :root {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
 
-    color: #242424;
-    background-color: rgba(255, 255, 255, 0.87);
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 @media screen and (min-width: 375px) {
-    .container {
-        margin-left: auto;
-        margin-right: auto;
-        width: 375px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .container {
-        width: 1440px;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
+  .container {
+    width: 1440px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 
 .main-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  line-height: 1.19;
+  letter-spacing: -1.92px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-title {
     font-family: 'DM Sans', sans-serif;
-    font-size: 32px;
-    line-height: 1.19;
+    font-size: 48px;
+    line-height: 1.08;
     letter-spacing: -1.92px;
-    margin-top: 40px;  
-    margin-bottom: 40px;
   }
-  @media screen and (min-width: 768px) {
-    .main-title {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 48px;
-      line-height: 1.08;
-      letter-spacing: -1.92px;
-    }
-  }
+}
 
 .brendcolor {
-    font-family: 'DM Sans', sans-serif;
-    font-size: inherit;
-    color: #4f2ee8;
-  }
+  font-family: 'DM Sans', sans-serif;
+  font-size: inherit;
+  color: #4f2ee8;
+}
 
-  .container-support {
-    width: 356px;
-  }
+.container-support {
+  width: 356px;
+}

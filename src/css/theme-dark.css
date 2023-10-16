@@ -95,9 +95,16 @@
 }
 
 .dark .shopping-list-icon {
-    filter: brightness(0) invert(1);
+    /* amazon */
+    filter: grayscale()invert();
+    /* apple */
+    filter: grayscale();
 }
 
 .dark .shopping-list-icon:hover {
+
+    /* amazon */
+    filter: invert(0)grayscale(0)drop-shadow(2px 0 6px #fff);
+    /* apple */
     filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
 }
