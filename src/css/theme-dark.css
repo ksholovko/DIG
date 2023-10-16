@@ -29,7 +29,7 @@
 .dark .close-button__icon .dark .img-light {
     color: #FFF;
     fill: #FFF;
-    stroke: #FFF;
+
 }
 
 
@@ -95,17 +95,18 @@
     border: 2px solid #4F2EE8;
 }
 
-.dark .shopping-list-icon {
-    /* amazon */
+.dark .darkFilterAmazon {
     filter: grayscale()invert();
-    /* apple */
+}
+
+.dark .darkFilterAmazon:hover {
+    filter: invert(0)grayscale(0)drop-shadow(2px 0 6px #fff);
+}
+
+.dark .darkFilterAppleBooks {
     filter: grayscale();
 }
 
-.dark .shopping-list-icon:hover {
-
-    /* amazon */
-    filter: invert(0)grayscale(0)drop-shadow(2px 0 6px #fff);
-    /* apple */
+.dark .darkFilterAppleBooks:hover {
     filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
 }
