@@ -1,0 +1,90 @@
+.light .header{
+    background: #FFF;
+
+}
+.dark .books {
+    background: #202024;
+}
+
+.dark {
+    background: #202024;
+}
+
+.dark .header,
+.dark .header-container{
+    color: #FFF;
+    background: #111;
+}
+
+.dark .header {
+    border: 1.5px solid #FFF;
+}
+
+.dark .site-nav_link,
+.dark .header-logo-link,
+.dark .site-nav_link,
+.dark .site-nav_logo_active
+.dark .site-nav-logo,
+.dark .burger-menu__icon,
+.dark .mobile-menu__header,
+.dark .mobile-menu__icon,
+.dark .close-button__icon {
+    color: #FFF;
+    fill: #FFF;
+    stroke: #FFF;
+}
+
+.dark .site-nav_link_active {
+    color: #111;
+    stroke: #FFF;
+}
+
+.dark .category-tittle {
+    color: #FFF;
+}
+
+.dark .book-item-tittle {
+    color: #FFF;
+}
+
+.dark .book-item-text {
+    color: #B4AFAF;
+}
+
+.dark .categories-item {
+    color: rgba(255, 255, 255, 0.60)
+}
+
+.dark .active-btn,
+.dark .active-btn:hover {
+    color: #EAC645;
+}
+
+.dark .main {
+    background: #202024;
+}
+
+/* .dark .shopping-list {
+    background: #202024;
+} */
+
+.dark .modal-pop-up {
+    background: #202024;
+    border: 2px solid #FFF;
+}
+
+/* .dark .flex-fonds-list {
+    background: #202024;
+} */
+
+.dark .main-title {
+    color: #FFF;
+}
+
+/* .dark .js-list-books {
+    background: #111;
+} */
+
+.dark .modal-pop-up-btn {
+    border: 2px solid #4F2EE8;
+}
