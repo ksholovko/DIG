@@ -1,5 +1,5 @@
 .fonds-container {
-    max-width: 335px;
+    width: 335px;
     height: 460px;
     padding-left: 40px;
     padding-right: 40px;
@@ -104,7 +104,7 @@
 
 @media only screen and (min-width: 768px) {
     .fonds-container {
-        max-width: 335px;
+        width: 335px;
         height: 474px;
         padding-left: 40px;
         padding-right: 40px;
