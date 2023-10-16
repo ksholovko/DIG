@@ -39,3 +39,5 @@ function renderBooksMarkup(choosenCategory, category) {
     .join('')}</ul>`;
   books.insertAdjacentHTML('beforeend', headTitle + murkup);
 }
+
+export { renderBooksMarkup };
