@@ -5,7 +5,8 @@ const categoryContainer = document.querySelector('.categories-list');
 async function categoriesData() {
   try {
     const result = await getCategoriesList();
-    const categoriesList = createMarkUp(result);
+    const sortedResult = result.sort((a, b) => a.list_name.localeCompare(b.list_name));
+    const categoriesList = createMarkUp(sortedResult);
     categoryContainer.insertAdjacentHTML('beforeend', categoriesList);
   } catch (error) {
     console.error(error);
