@@ -238,12 +238,12 @@
 
 
 
+import trash from '../images/icons.svg';
+import amazon from '../images/amazon1.png';
+import amazon2 from '../images/amazon2.png';
+import applebooks from '../images/applebook1.png';
+import applebooks2 from '../images/applebook2.png';
 
-const amazon = '../images/amazon1.png';
-const amazon2 = '../images/amazon2.png'
-const applebooks = '../images/applebook1.png';
-const applebooks2 = '../images/applebook2.png'
-const trash = '../images/icons.svg'
 
 const bookList = document.querySelector('.list-books');
 const storedBooks = JSON.parse(localStorage.getItem('savedBooks')) || [];
@@ -288,14 +288,14 @@ function marcupListBooks(storedBooks) {
           buy_links.filter(({ name }) => {
             return name === 'Amazon';
           })[0].url
-        }" target="_blank"><img style="height:16px " src="${amazon}" srcset ="${amazon} 1x, ${amazon2}2x" class="darkFilterAmazon" alt="Amazon"/></a>
+        }" target="_blank"><img style="height:16px " src="${amazon}" srcset ="${amazon} 1x, ${amazon2} 2x" class="darkFilterAmazon" alt="Amazon"/></a>
   </li>
   <li class="shopping-list-icon"> 
     <a href="${
       buy_links.filter(({ name }) => {
         return name === 'Apple Books';
       })[0].url
-    }" target="_blank"><img style="height:27px " src="${applebooks}" srcset ="${applebooks} 1x, ${applebooks2}2x" class="darkFilterAppleBooks" alt="Apple Books"/></a>
+    }" target="_blank"><img style="height:27px " src="${applebooks}" srcset ="${applebooks} 1x, ${applebooks2} 2x" class="darkFilterAppleBooks" alt="Apple Books"/></a>
   </li>
   </ul>
   </div>

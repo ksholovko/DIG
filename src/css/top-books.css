@@ -6,9 +6,11 @@
   color: #111;
   margin-bottom: 40px;
 }
+
 .part-heading-top {
   color: #4f2ee8;
 }
+
 .category-title-top {
   color: #b4afaf;
   font-size: 14px;
@@ -18,9 +20,12 @@
   text-transform: uppercase;
   margin-bottom: 18px;
 }
+
 .book-list-item.item-top-books {
   margin-bottom: 8px;
+  cursor: pointer;
 }
+
 .see-more-btn {
   display: block;
   margin-left: auto;
@@ -36,6 +41,7 @@
   letter-spacing: -0.14px;
   text-transform: uppercase;
 }
+
 .book-item-tittle.book-item-top {
   max-width: 335px;
   margin-bottom: 8px;
@@ -43,6 +49,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .book-top-img {
   object-fit: cover;
   object-position: center;
@@ -69,11 +76,13 @@
   left: 0;
   width: 100%;
   padding: 26px;
-  transform: translateY(100%); /* По замовчуванню сховано */
+  transform: translateY(100%);
+  /* По замовчуванню сховано */
   transition: transform 0.3s;
 }
 
 .image-container {
+
   position: relative;
   overflow: hidden;
   margin-bottom: 14px;
@@ -82,6 +91,7 @@
 .image-container:hover .image-caption {
   transform: translateY(0);
 }
+
 @media screen and (min-width: 768px) {
   .book-list-item.item-top-books {
     margin-bottom: 20px;
@@ -90,21 +100,26 @@
   .book-item-tittle.book-item-top {
     max-width: 218px;
   }
+
   .book-list.book-list-top {
     row-gap: 0;
   }
+
   .heading-top-books {
     font-size: 48px;
     line-height: 1.08;
   }
+
   .book-list-item {
     min-width: calc((100% - 50px) / 3);
   }
+
   .book-top-img {
     width: 218px;
     height: 316px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .books {
     width: 996px;
@@ -113,17 +128,21 @@
   .category-title-top {
     line-height: 1.71;
   }
+
   .book-list-item.item-top-books {
     margin-bottom: 32px;
   }
+
   .book-item-tittle.book-item-top {
     max-width: 180px;
   }
+
   .book-top-img {
     object-fit: fill;
     width: 180px;
     height: 256px;
   }
+
   .book-list-item {
     min-width: calc((100% - 96px) / 5);
     width: calc((100% - 96px) / 5);
