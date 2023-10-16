@@ -1,6 +1,10 @@
 import { getTopBooks } from './API';
+
+// import { pushBooksOnPage } from './selectedCategories';
+
 const sectionBooks = document.querySelector('.books');
 const allCategory = document.querySelector('.all-category');
+const seeMoreBtn = document.querySelector('.see-more-btn');
 
 async function fetchDataAndCreateCard() {
   try {
@@ -16,6 +20,7 @@ fetchDataAndCreateCard();
 allCategory.addEventListener('click', function () {
   fetchDataAndCreateCard();
 });
+// seeMoreBtn.addEventListener('click', pushBooksOnPage);
 
 function createCard(data) {
   const murkup = data
@@ -42,11 +47,12 @@ function createCard(data) {
     .map(({ book_image, author, title }) => {
       return `
   <li class="item book-list-item item-top-books">
-    <img
+    <div class="image-container"><img
       src="${book_image}"
       alt="Books created by ${author}"
       class="book-top-img"
     />
+    <div class="image-caption">quick view</div></div>
     <h3 class="book-item-tittle book-item-top">${title}</h3>
     <p class="book-item-text">${author}</p>
   </li>

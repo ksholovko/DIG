@@ -50,7 +50,37 @@
   max-width: 335px;
   max-height: 485px;
   border-radius: 8px;
+}
+
+.image-caption {
+  color: #111;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.56px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 0px 0px 8px 8px;
+  background: #eac645;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 26px;
+  transform: translateY(100%); /* По замовчуванню сховано */
+  transition: transform 0.3s;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
   margin-bottom: 14px;
+}
+
+.image-container:hover .image-caption {
+  transform: translateY(0);
 }
 @media screen and (min-width: 768px) {
   .book-list-item.item-top-books {
@@ -76,6 +106,10 @@
   }
 }
 @media screen and (min-width: 1440px) {
+  .books {
+    width: 996px;
+  }
+
   .category-title-top {
     line-height: 1.71;
   }
@@ -92,5 +126,6 @@
   }
   .book-list-item {
     min-width: calc((100% - 96px) / 5);
+    width: calc((100% - 96px) / 5);
   }
 }
