@@ -109,6 +109,16 @@
   gap: 8px;
 }
 
+.shopping-list-icon {
+  filter: grayscale();
+  transition: transform .3s;
+}
+
+.shopping-list-icon:hover {
+  filter: grayscale(0)drop-shadow(0 3px 3px rgba(0, 0, 0, .15));
+  transform: scale(1.2);
+}
+
 @media screen and (min-width: 768px) {
   .shopping-list-store {
     gap: 16px;
