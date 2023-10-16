@@ -24,11 +24,13 @@ function renderBooksMarkup(choosenCategory, category) {
     .map(
       ({ book_image, title, author }) => `
       <li class="book-list-item">
+      <div class="image-container">
         <img
           class="book-item-img"
           src="${book_image}"
           alt="${title}"
         />
+        <div class="image-caption">quick view</div></div>
         <h3 class="book-item-tittle">${title}</h3>
         <p class="book-item-text">${author}</p>
       </li>

@@ -26,6 +26,34 @@
   border-radius: 8px;
   margin-bottom: 14px;
 }
+.image-caption-selected {
+  color: #111;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.56px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 0px 0px 8px 8px;
+  background: #eac645;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 26px;
+  transform: translateY(100%); /* По замовчуванню сховано */
+  transition: transform 0.3s;
+}
+.image-container-selected {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.image-container-selected:hover .image-caption-selected {
+  transform: translateY(0);
+}
 .book-item-tittle {
   color: #111;
   font-family: DM Sans;
@@ -35,6 +63,10 @@
   line-height: 1.13;
   letter-spacing: -0.64px;
   text-transform: uppercase;
+  max-width: 335px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .book-item-text {
   color: #b4afaf;
@@ -103,5 +135,8 @@
   .book-item-img {
     width: 180px;
     height: 256px;
+  }
+  .book-item-tittle {
+    max-width: 180px;
   }
 }
