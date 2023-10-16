@@ -9,8 +9,12 @@ async function pushBooksOnPage(event) {
   event.preventDefault();
   books.innerHTML = '';
   const category = event.target.name;
-  const data = await getBooksByCategory(category);
-  renderBooksMarkup(data, category);
+  if (category === 'all-categories') {
+    return;
+  } else {
+    const data = await getBooksByCategory(category);
+    renderBooksMarkup(data, category);
+  }
 }
 
 function renderBooksMarkup(choosenCategory, category) {
