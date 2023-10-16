@@ -1,9 +1,6 @@
 .categories {
   width: 335px;
   height: 228px;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
   overflow: scroll;
 }
 
@@ -11,16 +8,12 @@
   .categories {
     width: 337px;
     height: 472px;
-    margin-left: 32px;
-    margin-right: 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .categories {
     width: 356px;
-    margin-left: 24px;
-    margin-right: 40px;
   }
 }
 
