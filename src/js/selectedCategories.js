@@ -17,7 +17,7 @@ async function pushBooksOnPage(event) {
   }
 }
 
-function renderBooksMarkup(choosenCategory, category) {
+export default function renderBooksMarkup(choosenCategory, category) {
   let words = category.split(' ');
   words[words.length - 1] = `<span class="speccolor">${
     words[words.length - 1]

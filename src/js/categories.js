@@ -39,9 +39,24 @@ function createMarkUp(result) {
         otherButton.classList.remove('active-btn');
       }
     });
+
   }
 
   categoriesBtns.forEach(categoriesButton => {
     categoriesButton.addEventListener('click', toggleClass);
   });
 })();
+
+
+
+// const seeMoreBtn = document.querySelector('.see-more-btn');
+
+// seeMoreBtn.addEventListener('click', pushMoreBooks);
+
+// async function pushMoreBooks(event) {
+//   event.preventDefault();
+//   sectionBooks.innerHTML = '';
+//   const category = event.target.name;
+//   const data = await getBooksByCategory(category);
+//   renderBooksMarkup(data, category);
+// }
