@@ -1,7 +1,7 @@
-.light .header{
+/* .light .header{
     background: #FFF;
 
-}
+} */
 .dark .books {
     background: #202024;
 }
@@ -28,7 +28,8 @@
 .dark .burger-menu__icon,
 .dark .mobile-menu__header,
 .dark .mobile-menu__icon,
-.dark .close-button__icon {
+.dark .close-button__icon
+.dark .img-light {
     color: #FFF;
     fill: #FFF;
     stroke: #FFF;
@@ -39,11 +40,15 @@
     stroke: #FFF;
 }
 
-.dark .category-tittle {
+.dark .category-tittle,
+.dark .heading-top-books,
+.dark .book-item-title,
+.dark .see-more-btn {
     color: #FFF;
 }
 
-.dark .book-item-tittle {
+.dark .book-item-tittle
+.dark .shopping-title-book {
     color: #FFF;
 }
 
@@ -64,27 +69,36 @@
     background: #202024;
 }
 
-/* .dark .shopping-list {
-    background: #202024;
-} */
+.dark .mobile-menu__header {
+    border: 1.5px solid #FFF;
+    background: #111;
+}
 
 .dark .modal-pop-up {
     background: #202024;
     border: 2px solid #FFF;
 }
 
-/* .dark .flex-fonds-list {
-    background: #202024;
-} */
+.dark .text-empty {
+    color: rgba(255, 255, 255, 0.60);
+}
 
 .dark .main-title {
     color: #FFF;
 }
 
-/* .dark .js-list-books {
-    background: #111;
-} */
+.dark .js-list-books {
+    color: #FFF;
+}
 
 .dark .modal-pop-up-btn {
     border: 2px solid #4F2EE8;
+}
+
+.dark .shopping-list-icon {
+    filter: brightness(0) invert(1);
+}
+
+.dark .shopping-list-icon:hover {
+    filter: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
 }
