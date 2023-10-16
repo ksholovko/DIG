@@ -1,131 +1,286 @@
-// імпортую svg щоб підставити як лінки в моділку 
-import amazon from '../../../images/svg/amazon.svg';
-import applebook from '../../../images/svg/applebook.svg';
-import bookshop from '../../../images/svg/bookshop.svg';
 
-// =====================================================
-const backDrop = document.querySelector('#book-modal');
-const bestSellerRef = document.querySelector('.best-sellers');
-const categoriesRef = document.querySelector('.category-books-list');
-const closeBtn = document.querySelector('.modal__close-btn');
-const addBookBtn = document.querySelector('.add-bookBtn');
-const removeNotification = document.querySelector('.removeNotification');
-const addNotification = document.querySelector('.addNotification');
-const notification = document.querySelector('.notification');
-let modalContent = document.querySelector('.modal__content');
-let idToLocaleStorege = null;
-let arrToLocaleStoreg = [];
 
-// дадав слухача на кнопку модалки яка додає id або видаляє в (залежності від контента в середині кнопики) до локал стореджу 
-addBookBtn.addEventListener('click', onAddBookClick);
-// сдодав слухача на кнопу "Х" модалки 
-closeBtn.addEventListener('click', onBtnCloseClick);
+import amazon from '../../images/amazon1.png';
+import applebooks from '../../images/applebook1.png';
 
-// слухачі на секції категорій та топселери
-bestSellerRef.addEventListener('click', onCardClick);
-categoriesRef.addEventListener('click', onCardClick);
+const sectionBooksEl = document.querySelector('.books');
 
-// функція яка робить запит ш повертає обєкт по id 
-function fetchCategory(id) {
-  return fetch(`https://books-backend.p.goit.global/books/${id}`).then(res =>
-    res.json()
-  );
+
+const modalEl = document.querySelector('.backdrop-pop-up');
+const modalCard = document.querySelector('.modal-pop-up');
+const closeButtonEl = document.querySelector('.close-button');
+const modalShoppingEl = document.querySelector('.modal-pop-up-content');
+let bookIdent;
+
+// ----перевірка на збереження у localStorage
+
+function isLocalStorage() {
+  const savedBooks = JSON.parse(localStorage.getItem('savedBooks'));
+  if (!savedBooks) {
+    localStorage.setItem('savedBooks', JSON.stringify([]));
+  }
 }
 
-// функція яка робить розмітку та додаю у модалку
-function renderTargetCategory(id) {
-  const markup = `
+// Функція для закриття модального вікна
+function closeModal() {
+  modalEl.classList.remove('active');
+  modalCard.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// ----Запрос деталей про книгу
+
+async function fetchBookDetails(Id) {
+  try {
+    const url = `https://books-backend.p.goit.global/books/${Id}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    const bookData = await response.json();
+    return [bookData];
     
-      <div class="modal__img-container">
-        <img src="${id.book_image}" alt="${id.title}" class="modal__img">
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+fetchBookDetails();
+
+// --------створення розмітки
+
+function renderModal(bookData) {
+  const modalMarkup = bookData
+    .map(data => {
+      return `
+        <div class="card-modal" id="${data._id}">
+        <img
+          class="modal-img"
+          alt="${data.title}"
+          src="${data.book_image}"
+        />
+  
+        <div class="thumb-modal">
+          <h2 class="book-title-in-modal">${data.title}</h2>
+          <p class="subtitle-book">${data.author}</p>
+          <p class="text book">
+          ${
+            data.description
+              ? data.description
+              : 'Sorry, but this book does not have an accessible description. Try reading it on the website of one of the shops'
+          }
+          </p>
+          <ul class="shop-list">
+            <li>
+              <a href="${data.buy_links[0].url}" target="_blank">
+                <img src="${amazon}" alt="Amazon" class="darkFilterModal"/>
+              </a>
+            </li>
+            <li>
+              <a href="${data.buy_links[1].url}" target="_blank">
+                <img src="${applebooks}" alt="Apple Books" />
+              </a>
+            </li>
+            <li>
+              <a href="${data.buy_links[4].url}" target="_blank">
+                <img src="${bookshop}" alt="Bookshop" />
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="modal__desc">
-        <h2 class="modal__title">${id.title}</h2>
-        <p class="modal__author">${id.author}</p>
-        <p class="modal__book-desc">${id.description}</p>
-        <ul class="modal__list">
-          <li class="modal__item"><a href="${id.buy_links[0].url}" class="amazon-link"><img class="store-link-img amazon-img" src="${amazon}" alt=""></a></li>
-          <li class="modal__item"><a href="${id.buy_links[1].url}" class="app-book-link"><img class="store-link-img" src="${applebook}" alt=""></a></li>
-          <li class="modal__item"><a href="${id.buy_links[3].url}" class="book-shop-link"><img class="store-link-img" src="${bookshop}" alt=""></a></li>
-        </ul>
-      
-</div>
+        `;
+    })
+    .join('');
 
+  modalShoppingEl.insertAdjacentHTML('beforeend', modalMarkup);
+}
+
+// Застосування білого фільтру для картинки Амазон
+
+const imgFilterAmazon = () => {
+  const forAmazonFilterModal = document.querySelector('.darkFilterModal');
+
+  if (localStorage.getItem('theme') === 'dark') {
+    forAmazonFilterModal.classList.add('filter-img');
+  } else {
+    forAmazonFilterModal.classList.remove('filter-img');
+  }
+};
+
+// ----відображення книги у модалці
+
+async function callModal(bookId) {
+  try {
+    modalShoppingEl.innerHTML = '';
+    const bookData = await fetchBookDetails(bookId);
+    bookIdent = bookData[0]._id;
+
+    renderModal(bookData);
+    imgFilterAmazon();
+    renderModalButton(bookIdent);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// -----Зберігання даних про книгу у localStorage
+
+async function saveObjectLocal(bookIdent) {
+  try {
+    const bookData = await fetchBookDetails(bookIdent);
+
+    const {
+      _id,
+      book_image,
+      title,
+      list_name,
+      description,
+      author,
+      buy_links,
+    } = bookData[0];
+
+    const savedBook = {
+      _id,
+      book_image,
+      title,
+      list_name,
+      description,
+      author,
+      buy_links,
+    };
+
+    const savedBooks = JSON.parse(localStorage.getItem('savedBooks')) || [];
+
+    savedBooks.push(savedBook);
+
+    localStorage.setItem('savedBooks', JSON.stringify(savedBooks));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ----видалення книги з localStorage
+
+function deleteObjectLocal(bookIdent) {
+  const savedBooks = JSON.parse(localStorage.getItem('savedBooks'));
+
+  const index = savedBooks.findIndex(book => book._id === bookIdent);
+
+  if (index !== -1) {
+    savedBooks.splice(index, 1);
+  }
+
+  localStorage.setItem('savedBooks', JSON.stringify(savedBooks));
+}
+
+// ---відмалювання кнопки в залежності від того ,чи є книга у localStorage
+
+function renderModalButton(bookIdent) {
+  const savedBooks = JSON.parse(localStorage.getItem('savedBooks'));
+
+  if (savedBooks.some(book => book._id === bookIdent)) {
+    const modalBtn = `
+      <button type="submit" class="button book" aria-label="Remove from shopping">
+        Remove from the shopping list
+      </button>
+      <p class="congratulation">
+        Сongratulations! You have added the book to the shopping list. To delete,
+        press the button “Remove from the shopping list”.
+      </p>
     `;
+    modalShoppingEl.insertAdjacentHTML('beforeend', modalBtn);
 
-  modalContent.innerHTML = '';
-  modalContent.innerHTML = markup;
-}
+    const submitShoppingEl = document.querySelector('.button.book');
 
-// функція яка по запиту додає розмітку безпосередньо у модалку
-function getCategory(id) {
-  fetchCategory(id).then(res => {
-    renderTargetCategory(res);
+    submitShoppingEl.addEventListener('click', handleRemoveButtonClick);
+  } else {
+    const modalBtn = `
+      <button type="submit" class="button book" aria-label="Add to shopping">
+        Add to shopping list
+      </button>
+    `;
+    modalShoppingEl.insertAdjacentHTML('beforeend', modalBtn);
 
-  
-  });
-}
-// функція яка при натисканні на "Х", "Escape", або повз модальне вікно закриває модальне вікно
-function onBtnCloseClick(e) {
-  console.log(e.code)
-  // console.log(e.currentTarget)
- 
-if(e.code === "Escape"){
-  backDrop.removeEventListener('keydown', onBtnCloseClick);
-  backDrop.classList.add('is-hidden');
-}
-if(e.currentTarget === e.target){
-  backDrop.classList.add('is-hidden');
-}
-if(e.target.classList.contains('modal__close-img')){
-    backDrop.classList.add('is-hidden');
-}
+    const submitShoppingEl = document.querySelector('.button.book');
 
-}
-
-// функція яка при натисканні на картку відкриває модалку та рендерить контент книги 
-function onCardClick(e) {
-  const card = e.target;
-  const el = card.closest('[data-id]');
-  const id = el.dataset.id;
- 
-  window.addEventListener('keydown', onBtnCloseClick)
-  backDrop.addEventListener('click', onBtnCloseClick)
-  backDrop.addEventListener('keydown', onBtnCloseClick)
-
-//   if(!JSON.parse(localStorage.getItem('shopping-list')).includes(id)){
-//   addNotification.classList.remove('hidden')
-//   removeNotification.classList.add('hidden')
-// }
-
-  
-  if(card.classList.contains('books-btn')){
-    return
+    submitShoppingEl.addEventListener('click', handleAddButtonClick);
   }
-  
-  idToLocaleStorege = id;
-  getCategory(id);
- 
-backDrop.classList.remove('is-hidden');
-
-
 }
 
-// функція кнопки молдки на додавання або видалення яка при певному значенні додає або видаляє id з локал стореджу 
-function onAddBookClick(res) {
-  notification.classList.toggle('hidden');
-  removeNotification.classList.toggle('hidden');
-  addNotification.classList.toggle('hidden');
+function handleAddButtonClick(event) {
+  saveObjectLocal(bookIdent);
+  closeModal();
+  removeModalButtonEventListeners();
+}
 
+function handleRemoveButtonClick(event) {
+  deleteObjectLocal(bookIdent);
+  closeModal();
+  removeModalButtonEventListeners();
+}
 
-  if (addNotification.classList.contains('hidden')) {
-    arrToLocaleStoreg.push(idToLocaleStorege);
-    // console.log(arrToLocaleStoreg)
-    localStorage.setItem('shopping-list', JSON.stringify(arrToLocaleStoreg));
+// ----видаляє обробника подій
+
+function removeModalButtonEventListeners() {
+  const submitShoppingEl = document.querySelector('.button.book');
+  submitShoppingEl.removeEventListener('click', handleRemoveButtonClick);
+  submitShoppingEl.removeEventListener('click', handleAddButtonClick);
+}
+
+function modalBackdropClose(event) {
+  if (event.target === modalEl) {
+    closeModal();
+    removeModalEventListeners();
   }
-  if (removeNotification.classList.contains('hidden')) {
-    const arrTofilter = JSON.parse(localStorage.getItem('shopping-list'));
-    const filtredArr = arrTofilter.filter(id => id !== idToLocaleStorege);
-    localStorage.setItem('shopping-list', JSON.stringify(filtredArr));
+}
+
+function modalCloseButtonClick(event) {
+  closeModal();
+  removeModalEventListeners();
+}
+
+function escapeKeyClose(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+    removeModalEventListeners();
+  }
+}
+
+// ----видаляє обробника подій
+
+function removeModalEventListeners() {
+  modalEl.removeEventListener('click', modalBackdropClose);
+  document.removeEventListener('keydown', escapeKeyClose);
+  closeButtonEl.removeEventListener('click', modalCloseButtonClick);
+}
+
+isLocalStorage();
+
+window.addEventListener('load', function () {
+  sectionBooksEl.addEventListener('click', containerClick);
+});
+
+function containerClick(event) {
+  let bookId;
+
+  if (event.target.tagName === 'BUTTON') {
+    categoriesData(event.target.dataset.catname);
+  }
+  if (event.target.classList.value.includes('js-ct')) {
+    bookId = event.target.parentElement.dataset.id;
+  }
+
+  if (bookId) {
+    callModal(bookId);
+    modalEl.classList.add('active');
+    modalCard.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    modalEl.addEventListener('click', modalBackdropClose);
+    document.addEventListener('keydown', escapeKeyClose);
+    closeButtonEl.addEventListener('click', modalCloseButtonClick);
   }
 }

@@ -2,7 +2,7 @@ import { getTopBooks } from './API';
 
 // import { pushBooksOnPage } from './selectedCategories';
 
-const sectionBooks = document.querySelector('.books');
+export const sectionBooks = document.querySelector('.books');
 const allCategory = document.querySelector('.all-category');
 const seeMoreBtn = document.querySelector('.see-more-btn');
 
@@ -31,30 +31,30 @@ function createCard(data) {
       let limitedData;
       if (screenWidth < 768) {
         limitedData = arr.slice(0, 1); // Для мобільних пристроїв 1 книжка вряду
-        console.log(limitedData);
+        // console.log(limitedData);
       } else if (screenWidth < 1440) {
         limitedData = arr.slice(0, 3); // Для планшетів 2 книжки в ряду
-        console.log(limitedData);
+        // console.log(limitedData);
       } else {
         limitedData = arr;
-        console.log(limitedData);
+        // console.log(limitedData);
       }
       return `
 
 <p class="category-title-top">${list}</p>
 <ul class="list book-list book-list-top">
   ${limitedData
-    .map(({ book_image, author, title }) => {
+    .map(({ book_image, author, title, _id }) => {
       return `
-  <li class="item book-list-item item-top-books">
-    <div class="image-container"><img
+  <li class="item book-list-item item-top-books js-ct" data-id="${_id}">
+    <div class="image-container js-ct" data-id="${_id}"><img
       src="${book_image}"
       alt="Books created by ${author}"
-      class="book-top-img"
+      class="book-top-img js-ct"  data-id="${_id}"
     />
-    <div class="image-caption">quick view</div></div>
-    <h3 class="book-item-tittle book-item-top">${title}</h3>
-    <p class="book-item-text">${author}</p>
+    <div class="image-caption js-ct" data-id="${_id}">quick view</div></div>
+    <h3 class="book-item-tittle book-item-top js-ct" data-id="${_id}">${title}</h3>
+    <p class="book-item-text js-ct" data-id="${_id}">${author}</p>
   </li>
   `;
     })

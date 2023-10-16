@@ -245,6 +245,7 @@ const applebooks = '../images/applebook1.png';
 const applebooks2 = '../images/applebook2.png'
 const trash = '../images/icons.svg'
 
+
 const bookList = document.querySelector('.list-books');
 const storedBooks = JSON.parse(localStorage.getItem('savedBooks')) || [];
 
