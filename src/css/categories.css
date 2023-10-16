@@ -23,17 +23,17 @@
 
 .categories-element {
   width: 307px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 .categories-element:last-child {
-  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {
   .categories-element {
     width: 309px;
-    margin-bottom: 32px;
+    padding-bottom: 32px;
   }
 }
 
