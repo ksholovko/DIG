@@ -13,6 +13,9 @@ async function pushBooksOnPage(event) {
     return;
   } else {
     const data = await getBooksByCategory(category);
+    if (!data || data.length === 0) {
+      alert('За вказаною категорією не знайдено жодної книги!');
+    }
     renderBooksMarkup(data, category);
   }
 }
