@@ -1,47 +1,45 @@
-@media screen and (min-width: 375px) and (max-width:767px) {
-    .adaptive-flex {
-        display: flex;
-        flex-direction: column;
-        row-gap: 40px;
-        margin-top: 40px;
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .adaptive-flex {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    margin-top: 40px;
+  }
 
-    }
-
-    .adaptive-container {
-        display: flex;
-        flex-direction: column;
-        row-gap: 40px;
-        align-items: center
-    }
-
+  .adaptive-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    align-items: center;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width:1339px) {
-    .adaptive-flex {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 40px;
-        gap: 98px;
-    }
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .adaptive-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 98px;
+  }
 
-    .adaptive-container {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 32px;
-    }
+  .adaptive-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 32px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .adaptive-flex {
-        margin-top: 40px;
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 40px;
-    }
+  .adaptive-flex {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 40px;
+  }
 
-    .adaptive-container {
-        display: flex;
-        flex-direction: column;
-        gap: 86px;
-    }
+  .adaptive-container {
+    display: flex;
+    flex-direction: column;
+    gap: 86px;
+  }
 }

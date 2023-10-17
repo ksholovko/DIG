@@ -18,6 +18,7 @@
 }
 .book-list-item {
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .book-item-img {
   display: block;
@@ -76,20 +77,20 @@
   line-height: 1.17;
   letter-spacing: -0.48px;
 }
-@media screen and (min-width: 375px) {
+/* @media screen and (min-width: 375px) {
   .container {
     max-width: 375px;
     padding-left: 20px;
     padding-right: 20px;
   }
-}
+} */
 
 @media screen and (min-width: 768px) {
-  .container {
+  /* .container {
     max-width: 768px;
     padding-left: 32px;
     padding-right: 32px;
-  }
+  } */
   .category-tittle {
     font-size: 48px;
     line-height: 1.08;
@@ -119,11 +120,11 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
+  /* .container {
     max-width: 1440px;
     padding-left: 24px;
     padding-right: 24px;
-  }
+  } */
   .book-list {
     column-gap: 24px;
   }
