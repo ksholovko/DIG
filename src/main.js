@@ -4,5 +4,5 @@ import './js/categories';
 import './js/top-books';
 import './js/support-ukraine';
 import './js/dark-theme';
-// import './js/modal-window';
-// import './js/';
+import './js/book-modal/modal-main';
+// import './js';
