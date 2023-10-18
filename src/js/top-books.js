@@ -1,12 +1,11 @@
 import { getTopBooks, getBooksByCategory } from './API';
-import renderBooksMarkup from "./selectedCategories";
+import renderBooksMarkup from './selectedCategories';
 
 // import { pushBooksOnPage } from './selectedCategories';
 
 const sectionBooks = document.querySelector('.books');
 const allCategory = document.querySelector('.all-category');
 
-  
 async function fetchDataAndCreateCard() {
   try {
     const responseData = await getTopBooks();
@@ -45,9 +44,9 @@ function createCard(data) {
 <p class="category-title-top">${list}</p>
 <ul class="list book-list book-list-top">
   ${limitedData
-    .map(({ book_image, author, title }) => {
+    .map(({ book_image, author, title, _id }) => {
       return `
-  <li class="item book-list-item item-top-books">
+  <li class="item book-list-item item-top-books" data-id=${_id}>
     <div class="image-container"><img
       src="${book_image}"
       alt="Books created by ${author}"
@@ -71,26 +70,17 @@ function createCard(data) {
 </h1>
 `;
   sectionBooks.insertAdjacentHTML('beforeend', heading + murkup);
-
 }
 
-  
-
-sectionBooks.addEventListener('click', pushMoreBooks) 
-
+sectionBooks.addEventListener('click', pushMoreBooks);
 
 async function pushMoreBooks(event) {
- 
   if (event.target.classList.value === 'see-more-btn') {
-  
     const category = event.target.parentNode.previousElementSibling;
     const data = await getBooksByCategory(category.textContent);
     console.log(data);
     sectionBooks.innerHTML = '';
- 
-  renderBooksMarkup(data, category.textContent);
-}
-  }
- 
-  
 
+    renderBooksMarkup(data, category.textContent);
+  }
+}
