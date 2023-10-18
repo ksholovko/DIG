@@ -1,208 +1,274 @@
-.book-modal {
-    width: 335px;
-    min-height: 678px;
-    background-color: #ffffff;
-    border: 2px solid #111111;
-    border-radius: 18px;
-    padding: 40px 24px;
-    @media screen and (min-width: 768px) {
-      display: flex;
-      flex-wrap: wrap;
-      width: 579px;
-      min-height: 465px;
-      padding: 40px 40px;
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .book-modal-details {
-      margin-left: 24px;
-      width: 279px;
-    }
-  }
-  body.dark-theme .book-modal {
-    background-color: var(--primary-bg-color-dark);
-    border: 2px solid var(--title-text-color-theme-dark);
-  }
-  .book-modal-img {
-    width: 287px;
-    height: 408px;
-    border-radius: 8px;
-    margin-bottom: 14px;
-    @media screen and (min-width: 768px) {
-      width: 192px;
-      height: 281px;
-      margin-bottom: 40px;
-    }
-  }
-  .book-modal-title {
-    margin-bottom: 4px;
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18px;
-    letter-spacing: -0.04em;
-    color: #111111;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 8px;
-      font-size: 24px;
-      line-height: 28px;
-    }
-  }
-  body.dark-theme .book-modal-title {
-    color: var(--title-text-color-theme-dark);
-  }
-  .book-modal-author {
-    margin-bottom: 18px;
-    font-family: 'DM Sans';
-    font-style: italic;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: -0.04em;
-  
-    color: #b4afaf;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 20px;
-      font-size: 14px;
-      line-height: 18px;
-    }
-  }
-  .book-modal-desc {
-    max-width: 287px;
-    margin-bottom: 14px;
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: -0.04em;
-    color: #111111;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 20px;
-    }
-  }
-  body.dark-theme .book-modal-desc {
-    color: var(--title-text-color-theme-dark);
-  }
-  .icon-book-modal-list {
-    margin-bottom: 40px;
+.modal-section {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--pop-up-background);
+  transition: var(--transition);
+  transform: scale(0.8);
+  /* Початковий масштаб модального вікна */
+  opacity: 0;
+  animation: openModal 0.7s forwards;
+}
+
+.modal-section {
+  min-width: 320px;
+}
+
+.modal-container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition);
+  width: 335px;
+  border: 2px solid var(--rep-black);
+  border-radius: 18px;
+  background: var(--rep-pop-up-background);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 40px 24px;
+  z-index: 1000;
+  /* position: relative; */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--pop-up-background);
+  z-index: 999;
+}
+
+.icon-x-close {
+  stroke: #111111;
+}
+
+.containerImg {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-book-image {
+  text-align: center;
+  margin-bottom: 14px;
+  align-items: center;
+}
+
+.modal-book-title {
+  /* color: #111; */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 4px;
+}
+
+.modal-author {
+  color: var(--grey-text-color);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.16;
+  margin-bottom: 18px;
+}
+
+.modal-description {
+  color: var(--rep-black);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
+  margin-bottom: 14px;
+}
+
+.modal-links {
+  display: inline-flex;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.modal-icon-x-close {
+  stroke: var(--rep-black);
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.modal-icon-x-close:hover,
+.modal-icon-x-close:focus {
+  stroke: var(--rep-x-focus);
+}
+
+.amazon {
+  filter: var(--rep-pop-up-amazon);
+}
+
+.modal-img-book {
+  filter: grayscale(100%);
+}
+
+.modal-btn-books {
+  width: 211px;
+  height: 46px;
+  color: var(--rep-black);
+  border-radius: 40px;
+  border: 2px solid var(--violet-color);
+  margin-bottom: 8px;
+  margin-left: 38px;
+  text-transform: uppercase;
+}
+
+.modal-btn-books:hover,
+.modal-btn-books:focus {
+  background: var(--violet-color);
+  color: var(--white-color);
+}
+
+/* .modal  */
+.modal-message {
+  color: var(--rep-pop-up-text-activated-batton);
+
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+@media screen and (min-width: 768px) {
+  .vse {
     display: flex;
-    column-gap: 20px;
+    flex-direction: row;
+  }
+
+  .modal-btn-books {
+    color: var(--rep-black);
+    width: 499px;
+    height: 64px;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .modal-container {
+    width: 579px;
+    padding: 40px 40px;
+  }
+
+  .modal-message {
+    width: 342px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    text-align: center;
+  }
+
+  .modal-information {
+    display: flex;
+  }
+
+  .modal-book-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.16;
+    letter-spacing: -0.96px;
+  }
+
+  .modal-author {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.28;
+    letter-spacing: -0.56px;
+    margin-bottom: 20px;
+  }
+
+  .modal-description {
+    width: 279px;
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.56px;
+    margin-bottom: 20px;
+  }
+
+  .modal-icon-x-close {
+    right: 24px;
+    top: 24px;
+  }
+
+  .modal-tex-meseg {
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
-  body.dark-theme .icon-book-modal-list {
-    fill: var(--title-text-color-theme-dark);
+
+  .modal-book-image {
+    width: 287px;
+    height: 408px;
   }
-  .icon-book-modal-amazon {
-    width: 62px;
-    height: 19px;
+
+  .modal-links {
+    justify-content: center;
   }
-  .icon-book-modal-ibooks {
-    width: 33px;
-    height: 33px;
+
+  .containerImg {
+    width: 100%;
+    height: 100%;
   }
-  .icon-book-modal-bookshop {
-    width: 38px;
-    height: 38px;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-book-image {
+    width: 192px;
+    height: 281px;
   }
-  .home-books-item {
-    cursor: pointer;
+}
+
+@media screen and (min-width: 1440px) {
+  .modal-btn-books {
+    margin: 0;
   }
-  .book-modal-btn {
-    display: flex;
-    margin-right: auto;
-    margin-left: auto;
+
+  .modal-icon-x-close {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal-btn-books {
     margin-bottom: 8px;
-    padding: 14px 23px;
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: #111111;
-    border: 2px solid #4f2ee8;
-    border-radius: 40px;
-    cursor: pointer;
-    @media screen and (min-width: 768px) {
-       padding: 20px 95px;
-      font-size: 18px;
-      line-height: 24px;
-    }
   }
-  .book-modal-btn.js-add {
-    @media screen and (min-width: 768px) {
-      padding: 20px 146.5px;
-    }
+
+  .modal-container {
+    padding: 44px 44px;
   }
-  .book-modal-btn.js-remove {
-    @media screen and (min-width: 768px) {
-      padding: 20px 95px;
-    }
+
+  .modal-book-image {
+    width: 192px;
+    height: 281px;
   }
-  .book-modal-buy {
-    display: flex;
-    margin-right: auto;
-    margin-left: auto;
-    width: 242px;
-  
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: rgba(17, 17, 17, 0.5);
-    @media screen and (min-width: 768px) {
-      width: 324px;
-      font-size: 12px;
-      line-height: 14px;
-    }
+}
+
+/* @keyframes openModal {
+  from {
+    transform: scale(0.5);
   }
-  body.dark-theme .book-modal-buy {
-    color: var(--primary-text-color-theme-dark);
+  to {
+    transform: scale(1);
   }
-  .book-modal-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    @media screen and (min-width: 768px) {
-      top: 31px;
-      right: 31px;
-    }
+} */
+
+@keyframes openModal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
   }
-  .icon-book-modal-close {
-    width: 14px;
-    height: 14px;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .icon-book-modal-close:hover,
-  .icon-book-modal-close:focus {
-    fill: var(--accent-color);
-    transition: var(--animation);
-  }
-  body.dark-theme .icon-book-modal-close {
-    fill: var(--title-text-color-theme-dark);
-  }
-  body.dark-theme .icon-book-modal-close:hover,
-  body.dark-theme .icon-book-modal-close:focus {
-    fill: var(--accent-color);
-    transition: var(--animation);
-  }
-  .js-add::after {
-    content: 'Add to shopping list';
-  }
-  .js-remove::after {
-    content: 'Remove from the shopping list';
-  }
-  body.dark-theme .book-modal,
-  body.dark-theme .book-modal-btn {
-    background-color: var(--primary-bg-color-dark);
-    color: var(--title-text-color-theme-dark);
-  }
+}

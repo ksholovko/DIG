@@ -148,10 +148,10 @@ suppBtn.addEventListener('click', () => {
   if (clickCount === 1) {
     firstClick = true;
     suppBtn.style.transition = 'transform 0.3s ease';
-    suppBtn.style.transform = 'rotate(270deg)';
+    suppBtn.style.transform = 'rotate(0deg)';
   } else if (clickCount === 2) {
     suppBtn.style.transition = 'transform 0.3s ease';
-    suppBtn.style.transform = 'rotate(90deg)';
+    suppBtn.style.transform = 'rotate(0deg)';
     clickCount = 0;
     firstClick = false;
     resetFonds();
