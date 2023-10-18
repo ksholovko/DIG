@@ -231,7 +231,7 @@
 //     "__v": 0
 //   },
 // ];
-// const savedBooks  = localStorage.setItem('savedBooks', JSON.stringify(books));
+// const savedBooks  = localStorage.setItem('storedBooks', JSON.stringify(books));
 
 // -- Все що вище видалити після написання фунції додавання в localStorage --//
 
@@ -246,7 +246,7 @@ import applebooks2 from '../images/applebook2.png';
 
 
 const bookList = document.querySelector('.list-books');
-const storedBooks = JSON.parse(localStorage.getItem('savedBooks')) || [];
+const storedBooks = JSON.parse(localStorage.getItem('storedBooks')) || [];
 
 bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
 
@@ -324,7 +324,7 @@ function deleteBook(bookId) {
   
     storedBooks.splice(bookIndex, 1);
 
-    localStorage.setItem('savedBooks', JSON.stringify(storedBooks));
+    localStorage.setItem('storedBooks', JSON.stringify(storedBooks));
 
     bookList.innerHTML = '';
     bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
