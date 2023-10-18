@@ -29,9 +29,9 @@ export default function renderBooksMarkup(choosenCategory, category) {
   const headTitle = `<h2 class="category-tittle">${category}</h2>`;
   const murkup = `<ul class="book-list">${choosenCategory
     .map(
-      ({ book_image, title, author }) => `
+      ({ book_image, title, author, _id }) => `
       <li class="book-list-item">
-      <div class="image-container">
+      <div class="image-container" data-id=${_id}>
         <img
           class="book-item-img"
           src="${book_image}"
