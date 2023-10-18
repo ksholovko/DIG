@@ -250,9 +250,6 @@ const storedBooks = JSON.parse(localStorage.getItem('savedBooks')) || [];
 
 bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
 
-
-
-
 // -- Функція верстки картки книги по даним з localStorage --//
 
 function marcupListBooks(storedBooks) {
@@ -315,59 +312,52 @@ function marcupListBooks(storedBooks) {
 
 
 
-
-
-
-
 // -- Функція видалення картки книги зі сторінки та з localStorage --//
 // -- Перевірити коли буде написана фунції додавання в localStorage --//
 
 function deleteBook(bookId) {
-  // Знайти індекс книги в масиві storedBooks за її _id
+ 
   const bookIndex = storedBooks.findIndex(book => book._id === bookId);
 
-  // Перевірити, чи була знайдена книга
+  
   if (bookIndex !== -1) {
-    // Видалити книгу з масиву
+  
     storedBooks.splice(bookIndex, 1);
 
-    // Оновити дані в local storage
     localStorage.setItem('savedBooks', JSON.stringify(storedBooks));
 
-    // Оновити відображення списку книг на сторінці
     bookList.innerHTML = '';
     bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
   }
 }
-// Отримати всі кнопки "Delete" на сторінці
+
 const deleteButtons = document.querySelectorAll('.js-trash');
 
-// Додати обробник подій для кожної кнопки "Delete"
+
 deleteButtons.forEach(button => {
   button.addEventListener('click', event => {
     const bookId = event.target.dataset.id;
-    deleteBook(bookId); // Викликати функцію видалення книги
+    deleteBook(bookId); 
   });
 });
 
 
-// -- Функція повідомлення коли на сторінці немає карток --//
+// -- Функція повідомлення, коли на сторінці немає карток --//
 
 
 const emptyPageMessage = document.querySelector('.empty-page-message');
 
 function displayEmptyPageMessage() {
   if (storedBooks.length === 0) {
-    // Показати повідомлення та картинку, якщо масив порожній
+   
     bookList.style.display = 'none';
-    // emptyPageMessage.style.display = 'block';
+  
   } else {
-    // Показати список книг, якщо масив не порожній
-    // bookList.style.display = 'block';
+  
     emptyPageMessage.style.display = 'none';
   }
 }
-// Викликати функцію для перевірки та відображення повідомлення
+
 displayEmptyPageMessage();
 
 
