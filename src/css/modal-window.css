@@ -87,6 +87,7 @@
 }
 
 .modal-links {
+  margin-top: 20px;
   display: inline-flex;
   gap: 20px;
   margin-bottom: 44px;
@@ -104,13 +105,24 @@
   stroke: var(--rep-x-focus);
 }
 
-.amazon {
+/* .amazon {
   filter: var(--rep-pop-up-amazon);
+} */
+
+.modal-amazon-link,
+.modal-applebook-link {
+  filter: grayscale();
+  transition: transform .3s;
 }
 
-.modal-img-book {
-  filter: grayscale(100%);
+
+
+.modal-amazon-link:hover,
+.modal-applebook-link:hover {
+  filter: grayscale(0)drop-shadow(0 3px 3px rgba(0, 0, 0, .15));
+  transform: scale(1.2);
 }
+
 
 .modal-btn-books {
   width: 211px;
@@ -213,6 +225,7 @@
 
   .modal-links {
     justify-content: center;
+    align-items: center;
   }
 
   .containerImg {
