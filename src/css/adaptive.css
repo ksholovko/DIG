@@ -18,11 +18,12 @@
   .adaptive-flex {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
     gap: 98px;
+
   }
 
   .adaptive-container {
+    margin-top: 40px;
     display: flex;
     flex-wrap: nowrap;
     gap: 32px;
