@@ -313,52 +313,56 @@ function marcupListBooks(storedBooks) {
 
 
 // -- Функція видалення картки книги зі сторінки та з localStorage --//
-// -- Перевірити коли буде написана фунції додавання в localStorage --//
-
-function deleteBook(bookId) {
- 
-  const bookIndex = storedBooks.findIndex(book => book._id === bookId);
-
-  
-  if (bookIndex !== -1) {
-  
-    storedBooks.splice(bookIndex, 1);
-
-    localStorage.setItem('storedBooks', JSON.stringify(storedBooks));
-
-    bookList.innerHTML = '';
-    bookList.insertAdjacentHTML('beforeend', marcupListBooks(storedBooks));
-  }
-}
 
 const deleteButtons = document.querySelectorAll('.js-trash');
 
-
 deleteButtons.forEach(button => {
   button.addEventListener('click', event => {
-    const bookId = event.target.dataset.id;
+    const bookId = event.currentTarget.dataset.id;
     deleteBook(bookId); 
   });
 });
 
 
-// -- Функція повідомлення, коли на сторінці немає карток --//
+function deleteBook(bookId) {
+ 
+  const bookIndex = storedBooks.findIndex(book => book._id === bookId);
 
+  if (bookIndex !== -1) {
+    storedBooks.splice(bookIndex, 1);
 
-const emptyPageMessage = document.querySelector('.empty-page-message');
+    localStorage.setItem('storedBooks', JSON.stringify(storedBooks));
+            updateBookList();
+  }
+}
 
-function displayEmptyPageMessage() {
+// -- Функция обновления списка книг и отображения сообщения, когда нет карточек --//
+
+function updateBookList() {
+  const emptyPageMessage = document.querySelector('.empty-page-message');
+  const bookList = document.querySelector('.list-books');
+
   if (storedBooks.length === 0) {
-   
     bookList.style.display = 'none';
-  
+    emptyPageMessage.style.display = 'block';
   } else {
-  
+    bookList.style.display = 'block';
     emptyPageMessage.style.display = 'none';
   }
 }
 
-displayEmptyPageMessage();
+updateBookList();
+
+
+
+
+
+
+
+
+// -- Функція повідомлення, коли на сторінці немає карток --//
+
+
 
 
 
