@@ -9,46 +9,6 @@ const refs = {
   
   function toggleModal() {
     refs.burger.classList.toggle('is-hidden');
-  }
-  // Toggler
-  function setTheme(theme) {
-  
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    
-   
-    const toggleSwitches = document.querySelectorAll('.common-toggle input[type="checkbox"]');
-    toggleSwitches.forEach(function(toggleSwitch) {
-      if (theme === 'dark') {
-        toggleSwitch.checked = true;
-      } else {
-        toggleSwitch.checked = false;
-      }
-    });
-  }
-  
-  
-  const currentTheme = localStorage.getItem('theme');
-  
-  
-  if (currentTheme) {
-    setTheme(currentTheme);
-  } else {
-  
-    setTheme('light');
-  }
-  
-  const toggleSwitches = document.querySelectorAll('.common-toggle input[type="checkbox"]');
-  toggleSwitches.forEach(function(toggleSwitch) {
-    toggleSwitch.addEventListener('change', function(e) {
-  
-      if (e.target.checked) {
-        setTheme('dark');
-      } else {
-        setTheme('light');
-      }
-    }, false);
-  });
-  
-  
+}
+
   

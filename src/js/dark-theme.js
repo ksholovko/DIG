@@ -3,34 +3,40 @@ const Theme = {
   DARK: 'dark',
 };
 
-const switcher = document.querySelector('.input_checkbox');;
+
 const body = document.body;
-switcher.addEventListener('change', onChange);
 const savedTheme = localStorage.getItem('Theme');
 
-
-if (!savedTheme) {
-  body.classList.add(Theme.DARK);
-  switcher.checked = true;
-}
-
-if (savedTheme) {
-  body.classList.add(savedTheme);
-  if (savedTheme === Theme.DARK) {
-    switcher.checked = true;
-  }
-} else {
-  body.classList.add(Theme.LIGHT);
-}
+const toggleSwitches = document.querySelectorAll('.input_checkbox');
+toggleSwitches.forEach( toggleSwitch =>
+  toggleSwitch.addEventListener('click', onChange))
+  
 
 function onChange(e) {
   if (e.currentTarget.checked) {
     body.classList.add(Theme.DARK);
     body.classList.remove(Theme.LIGHT);
+    toggleSwitches.forEach(toggleSwitch => toggleSwitch.checked = true);
     localStorage.setItem('Theme', Theme.DARK);
+
+
   } else {
     body.classList.add(Theme.LIGHT);
     body.classList.remove(Theme.DARK);
+    toggleSwitches.forEach(toggleSwitch => toggleSwitch.checked = false);
+
     localStorage.setItem('Theme', Theme.LIGHT);
   }
+}
+
+
+if (savedTheme) {
+  body.classList.add(savedTheme);
+  
+  if (savedTheme === Theme.DARK) {
+    toggleSwitches.forEach(toggleSwitch => toggleSwitch.checked = true);
+  } else {
+      toggleSwitches.forEach(toggleSwitch => toggleSwitch.checked = false);
+  }
+
 }
