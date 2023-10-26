@@ -72,9 +72,6 @@
     --rep-x-focus: #eac645;
 }
 
-body {
-    height: 100vh;
-}
 
 .container {
     max-width: 375px;
