@@ -31,7 +31,6 @@ function createMarkUp(result) {
 
   function toggleClass(event) {
     const categoriesButton = event.target;
-    console.log(categoriesButton);
 
     categoriesButton.classList.add('active-btn');
 

@@ -1,11 +1,12 @@
 import { getTopBooks, getBooksByCategory } from './API';
-import renderBooksMarkup from './selectedCategories';
+import renderBooksMarkup from "./selectedCategories";
 
 // import { pushBooksOnPage } from './selectedCategories';
 
 const sectionBooks = document.querySelector('.books');
 const allCategory = document.querySelector('.all-category');
 
+  
 async function fetchDataAndCreateCard() {
   try {
     const responseData = await getTopBooks();
@@ -31,22 +32,19 @@ function createCard(data) {
       let limitedData;
       if (screenWidth < 768) {
         limitedData = arr.slice(0, 1); // Для мобільних пристроїв 1 книжка вряду
-        console.log(limitedData);
       } else if (screenWidth < 1440) {
         limitedData = arr.slice(0, 3); // Для планшетів 2 книжки в ряду
-        console.log(limitedData);
       } else {
         limitedData = arr;
-        console.log(limitedData);
       }
       return `
 
 <p class="category-title-top">${list}</p>
 <ul class="list book-list book-list-top">
   ${limitedData
-    .map(({ book_image, author, title, _id }) => {
+    .map(({ book_image, author, title }) => {
       return `
-  <li class="item book-list-item item-top-books" data-id=${_id}>
+  <li class="item book-list-item item-top-books">
     <div class="image-container"><img
       src="${book_image}"
       alt="Books created by ${author}"
@@ -70,17 +68,24 @@ function createCard(data) {
 </h1>
 `;
   sectionBooks.insertAdjacentHTML('beforeend', heading + murkup);
+
 }
 
-sectionBooks.addEventListener('click', pushMoreBooks);
+
+sectionBooks.addEventListener('click', pushMoreBooks) 
+
 
 async function pushMoreBooks(event) {
+ 
   if (event.target.classList.value === 'see-more-btn') {
+  
     const category = event.target.parentNode.previousElementSibling;
     const data = await getBooksByCategory(category.textContent);
-    console.log(data);
     sectionBooks.innerHTML = '';
-
-    renderBooksMarkup(data, category.textContent);
-  }
+ 
+  renderBooksMarkup(data, category.textContent);
 }
+  }
+ 
+  
+
