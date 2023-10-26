@@ -4,6 +4,10 @@
 @import url('./shopping-list.css');
 @import url('./theme-dark.css');
 
+body {
+  height: 100vh;
+}
+
 :root {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
