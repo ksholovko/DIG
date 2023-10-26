@@ -1,3 +1,4 @@
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { getTopBooks, getBooksByCategory } from './API';
 import renderBooksMarkup from "./selectedCategories";
 
@@ -9,8 +10,10 @@ const allCategory = document.querySelector('.all-category');
   
 async function fetchDataAndCreateCard() {
   try {
+    Loading.dots();
     const responseData = await getTopBooks();
     createCard(responseData);
+    Loading.remove();
   } catch (error) {
     console.log('Error with your API');
   }
@@ -78,12 +81,14 @@ sectionBooks.addEventListener('click', pushMoreBooks)
 async function pushMoreBooks(event) {
  
   if (event.target.classList.value === 'see-more-btn') {
-  
+    Loading.dots();
     const category = event.target.parentNode.previousElementSibling;
     const data = await getBooksByCategory(category.textContent);
     sectionBooks.innerHTML = '';
  
-  renderBooksMarkup(data, category.textContent);
+    renderBooksMarkup(data, category.textContent);
+      Loading.remove();
+
 }
   }
  

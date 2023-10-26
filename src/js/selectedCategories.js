@@ -1,4 +1,6 @@
 import { getBooksByCategory } from './API';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
 
 const listItem = document.querySelector('.categories-list');
 const books = document.querySelector('.books');
@@ -12,7 +14,10 @@ async function pushBooksOnPage(event) {
   if (category === 'all-categories') {
     return;
   } else {
+    Loading.dots();
     const data = await getBooksByCategory(category);
+    Loading.remove();
+
     if (!data || data.length === 0) {
       alert('За вказаною категорією не знайдено жодної книги!');
     }
