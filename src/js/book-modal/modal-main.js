@@ -11,7 +11,7 @@ let currentBookData = []; // Зробили змінну глобальною
 document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', async function (event) {
     const closestLi =
-      event.target.closest('li.book-item-top-books') ||
+      event.target.closest('li.item-top-books') ||
       event.target.closest('li.book-list-item');
 
     if (closestLi) {

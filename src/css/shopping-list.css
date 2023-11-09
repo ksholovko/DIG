@@ -39,6 +39,7 @@
   display: flex;
   gap: 14px;
 
+  margin-bottom: 20px;
   padding: 14px;
 
   border-radius: 16px;
@@ -160,6 +161,7 @@
 
 @media screen and (min-width: 768px) {
   .empty-page-message {
+    display: flex;
     margin-top: 140px;
   }
 }

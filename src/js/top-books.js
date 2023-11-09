@@ -45,9 +45,9 @@ function createCard(data) {
 <p class="category-title-top">${list}</p>
 <ul class="list book-list book-list-top">
   ${limitedData
-    .map(({ book_image, author, title }) => {
+    .map(({ book_image, author, title, _id }) => {
       return `
-  <li class="item book-list-item item-top-books">
+  <li class="item book-list-item item-top-books" data-id=${_id}>
     <div class="image-container"><img
       src="${book_image}"
       alt="Books created by ${author}"
