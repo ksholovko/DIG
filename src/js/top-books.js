@@ -87,10 +87,43 @@ async function pushMoreBooks(event) {
     sectionBooks.innerHTML = '';
  
     renderBooksMarkup(data, category.textContent);
-      Loading.remove();
-
+    Loading.remove();
+    
+    addActiveClass(category.textContent);
 }
   }
  
   
+
+
+
+function addActiveClass(category) {
+
+  const categoriesBtns = document.querySelectorAll('.categories-item');
+
+  categoriesBtns.forEach(button => {
+
+    if (button.textContent.trim() === category.trim()) {
+      button.classList.add('active-btn');
+    } else {
+      button.classList.remove('active-btn');
+    }
+
+  })
+  }
+
+  //   if (otherButton.textContent.trim() !== category.trim()) {
+  //       otherButton.classList.remove('active-btn');
+  //     }
+    
+
+  //   });
+
+  //  categoriesBtns.forEach(otherButton => {
+  //     if (otherButton.textContent.trim() !== category.trim()) {
+  //       otherButton.classList.remove('active-btn');
+  //     }
+  //   });
+  
+
 
